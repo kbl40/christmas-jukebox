@@ -8,13 +8,18 @@ const btn5 = document.getElementById("wonderful-time")
 
 const btnList = [btn1, btn2, btn3, btn4, btn5]
 
-function playSong(id) {
-  // remove class from each button to clear those that are not playing
+document.addEventListener('click', function(e) {
+  // data identification
+  console.log(e.target.id)
+  console.log(e.target)
+  console.log(e.target.dataset.play)
+  
+  // botton class toggle setup
   btnList.forEach((btn) => btn.classList.remove("button-play"))
   
-  // 
-  source = `https://www.youtube.com/embed/${id}?autoplay=1`
+  const source = `https://www.youtube.com/embed/${e.target.dataset.play}?autoplay=1`
+  console.log(source)
+
   document.getElementById("player").setAttribute("src", source)
-  console.log(event.srcElement.id)
-  document.getElementById(event.srcElement.id).classList.toggle("button-play")
-}
+  document.getElementById(e.target.id).classList.toggle("button-play")
+})
